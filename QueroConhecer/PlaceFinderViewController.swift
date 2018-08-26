@@ -38,8 +38,13 @@ class PlaceFinderViewController: UIViewController {
     
     @IBAction func findCity(_ sender: UIButton) {
         tfCity.resignFirstResponder()
-        let city = tfCity.text!
-        
+        let address = tfCity.text!
+        load(show: true)
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+            self.load(show: false)
+            print(<#T##items: Any...##Any#>)
+        }
     }
     
     @IBAction func close(_ sender: UIButton) {
