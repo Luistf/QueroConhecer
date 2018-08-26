@@ -18,15 +18,19 @@ class mapViewController: UIViewController {
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var lbAddress: UILabel!
     
-    
-
-    
-    
     //MARK: Properties
     var places: [Place]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        seacrBar.isHidden = true
+        viInfo.isHidden = true
+        
+        if places.count == 1 {
+            title = places[0].name
+        } else {
+            title = "Meu lugares"
+        }
 
         for place in places {
             addToMap(place)

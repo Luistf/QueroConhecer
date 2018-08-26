@@ -58,7 +58,7 @@ class PlacesTableViewController: UITableViewController {
     }
     
     @objc func showAll() {
-        
+        performSegue(withIdentifier: "mapSegue", sender: nil)
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
