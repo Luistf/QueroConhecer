@@ -121,7 +121,7 @@ class PlaceFinderViewController: UIViewController {
                     self.showMessage(type: .error("Não foi encontrado nenhum local com esse nome"))
                 }
             } else {
-                self.showMessage(type: .error("Erro desconhecido"))
+                self.showMessage(type: .error("Local não encontrado"))
             }
         }
     }

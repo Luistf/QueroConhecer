@@ -12,16 +12,39 @@ import MapKit
 class mapViewController: UIViewController {
 
     //MARK: Outltes
-    
+    @IBOutlet weak var seacrBar: UISearchBar!
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var viInfo: UIView!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var lbAddress: UILabel!
     
+    
+
+    
+    
+    //MARK: Properties
+    var places: [Place]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        for place in places {
+            addToMap(place)
+        }
+        
+        showPlaces()
+    }
+    
+    //MARK: Methods
+    func addToMap(_ place: Place) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = place.coordinate
+        annotation.title = place.name
+        mapView.addAnnotation(annotation)
+    }
+    
+    func showPlaces() {
+        mapView.showAnnotations(mapView.annotations, animated: true)
     }
 
 
