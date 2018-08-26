@@ -56,7 +56,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="8DH-62-QTQ"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ksA-e8-oFM">
                             <connections>
-                                <segue destination="rIw-rm-V5j" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="DVJ-zA-4iE"/>
+                                <segue destination="rIw-rm-V5j" kind="presentation" identifier="finderSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="DVJ-zA-4iE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

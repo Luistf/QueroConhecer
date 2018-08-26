@@ -24,6 +24,7 @@ class PlaceFinderViewController: UIViewController {
     
     //MARK: Properties
     var place: Place!
+    weak var delegate: PlaceFinderDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +98,8 @@ class PlaceFinderViewController: UIViewController {
         alert.addAction(cancelAction)
         if hasConfirmation {
             let confirmAction = UIAlertAction(title: "Ok", style: .default) { (action) in
-                print("Ok")
+                self.delegate?.addPlace(self.place)
+                self.dismiss(animated: true, completion: nil)
             }
             alert.addAction(confirmAction)
         }
@@ -127,4 +129,10 @@ class PlaceFinderViewController: UIViewController {
     @IBAction func close(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+}
+
+//MARK: Protocol
+protocol PlaceFinderDelegate: class {
+    func addPlace(_ place: Place)
+    
 }
