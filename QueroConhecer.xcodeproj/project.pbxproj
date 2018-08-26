@@ -14,6 +14,7 @@
 		75E5ADAE2131E3DB009279BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75E5ADAC2131E3DB009279BD /* LaunchScreen.storyboard */; };
 		75E5ADB62131E568009279BD /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E5ADB52131E567009279BD /* PlacesTableViewController.swift */; };
 		75E5ADB82131E7B7009279BD /* PlaceFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E5ADB72131E7B7009279BD /* PlaceFinderViewController.swift */; };
+		75E5ADBA213242C6009279BD /* mapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E5ADB9213242C6009279BD /* mapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		75E5ADAF2131E3DB009279BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75E5ADB52131E567009279BD /* PlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTableViewController.swift; sourceTree = "<group>"; };
 		75E5ADB72131E7B7009279BD /* PlaceFinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceFinderViewController.swift; sourceTree = "<group>"; };
+		75E5ADB9213242C6009279BD /* mapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				75E5ADA32131E3DB009279BD /* AppDelegate.swift */,
 				75E5ADA52131E3DB009279BD /* ViewController.swift */,
 				75E5ADA72131E3DB009279BD /* Main.storyboard */,
+				75E5ADB9213242C6009279BD /* mapViewController.swift */,
 				75E5ADB72131E7B7009279BD /* PlaceFinderViewController.swift */,
 				75E5ADB52131E567009279BD /* PlacesTableViewController.swift */,
 				75E5ADAA2131E3DB009279BD /* Assets.xcassets */,
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75E5ADA62131E3DB009279BD /* ViewController.swift in Sources */,
+				75E5ADBA213242C6009279BD /* mapViewController.swift in Sources */,
 				75E5ADA42131E3DB009279BD /* AppDelegate.swift in Sources */,
 				75E5ADB82131E7B7009279BD /* PlaceFinderViewController.swift in Sources */,
 				75E5ADB62131E568009279BD /* PlacesTableViewController.swift in Sources */,

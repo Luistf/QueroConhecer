@@ -14,6 +14,8 @@ class PlaceFinderViewController: UIViewController {
     //MARK: Outlets
     @IBOutlet weak var tfCity: UITextField!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var aiLoading: UIActivityIndicatorView!
+    @IBOutlet weak var viLoading: UIView!
     
     
     override func viewDidLoad() {
