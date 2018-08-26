@@ -16,6 +16,7 @@
 		75E5ADB82131E7B7009279BD /* PlaceFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E5ADB72131E7B7009279BD /* PlaceFinderViewController.swift */; };
 		75E5ADBA213242C6009279BD /* mapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E5ADB9213242C6009279BD /* mapViewController.swift */; };
 		75E5ADBE213251E6009279BD /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E5ADBD213251E6009279BD /* Place.swift */; };
+		75E5ADC021335772009279BD /* PlaceAnnotaion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E5ADBF21335772009279BD /* PlaceAnnotaion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		75E5ADB72131E7B7009279BD /* PlaceFinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceFinderViewController.swift; sourceTree = "<group>"; };
 		75E5ADB9213242C6009279BD /* mapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapViewController.swift; sourceTree = "<group>"; };
 		75E5ADBD213251E6009279BD /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		75E5ADBF21335772009279BD /* PlaceAnnotaion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotaion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				75E5ADAC2131E3DB009279BD /* LaunchScreen.storyboard */,
 				75E5ADAF2131E3DB009279BD /* Info.plist */,
 				75E5ADBD213251E6009279BD /* Place.swift */,
+				75E5ADBF21335772009279BD /* PlaceAnnotaion.swift */,
 			);
 			path = QueroConhecer;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 				75E5ADA42131E3DB009279BD /* AppDelegate.swift in Sources */,
 				75E5ADBE213251E6009279BD /* Place.swift in Sources */,
 				75E5ADB82131E7B7009279BD /* PlaceFinderViewController.swift in Sources */,
+				75E5ADC021335772009279BD /* PlaceAnnotaion.swift in Sources */,
 				75E5ADB62131E568009279BD /* PlacesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
