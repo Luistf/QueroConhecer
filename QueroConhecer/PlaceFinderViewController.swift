@@ -17,6 +17,8 @@ class PlaceFinderViewController: UIViewController {
     @IBOutlet weak var aiLoading: UIActivityIndicatorView!
     @IBOutlet weak var viLoading: UIView!
     
+    //MARK: Properties
+    var place: Place!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,21 @@ class PlaceFinderViewController: UIViewController {
             aiLoading.stopAnimating()
         }
     }
+    
+    func savePlace(with placemark: CLPlacemark?) -> Bool {
+        guard let placemark = placemark, let coordinate = placemark.location?.coordinate else {
+            return false
+        }
+        let name = placemark.name ?? placemark.country ?? "Desconhecido"
+        let address = Place.getFormattedAddress(with: placemark)
+        place = Place(name: name, latitude: coordinate.latitude, longitude: coordinate.longitude, address: address)
+        
+        let region = MKCoordinateRegionMakeWithDistance(coordinate, 1500, 1500)
+        mapView.setRegion(region, animated: true)
+        
+        
+        return true
+    }
 
     
     //MARK: Actions
@@ -43,7 +60,13 @@ class PlaceFinderViewController: UIViewController {
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(address) { (placemarks, error) in
             self.load(show: false)
-            print(<#T##items: Any...##Any#>)
+            if error == nil {
+                if self.savePlace(with: placemarks?.first) {
+                    print("Ok achei")
+                } else {
+                    print("Deu problema")
+                }
+            }
         }
     }
     
