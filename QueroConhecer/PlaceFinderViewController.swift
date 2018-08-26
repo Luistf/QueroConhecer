@@ -11,6 +11,11 @@ import MapKit
 
 class PlaceFinderViewController: UIViewController {
 
+    enum placeFinderMessageType {
+        case error(String)
+        case confirmation(String)
+    }
+    
     //MARK: Outlets
     @IBOutlet weak var tfCity: UITextField!
     @IBOutlet weak var mapView: MKMapView!
@@ -46,8 +51,34 @@ class PlaceFinderViewController: UIViewController {
         let region = MKCoordinateRegionMakeWithDistance(coordinate, 1500, 1500)
         mapView.setRegion(region, animated: true)
         
+        self.showMessage(type: .confirmation(place.name))
         
         return true
+    }
+    
+    func showMessage(type: placeFinderMessageType) {
+        let title: String
+        let message: String
+        var hasConfirmation: Bool = false
+        switch type {
+            case .confirmation(let name):
+                title = "Local encontrado"
+            message = "Deseja adicionar \(name)?"
+        case .error(let errorMessage):
+                title = "Error"
+                message = errorMessage
+        }
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        if hasConfirmation {
+            let confirmAction = UIAlertAction(title: "Ok", style: .default) { (action) in
+                print("Ok")
+            }
+            alert.addAction(confirmAction)
+        }
+        present(alert, animated: true, completion: nil)
     }
 
     
@@ -61,11 +92,11 @@ class PlaceFinderViewController: UIViewController {
         geoCoder.geocodeAddressString(address) { (placemarks, error) in
             self.load(show: false)
             if error == nil {
-                if self.savePlace(with: placemarks?.first) {
-                    print("Ok achei")
-                } else {
-                    print("Deu problema")
+                if !self.savePlace(with: placemarks?.first) {
+                    self.showMessage(type: .error("Não foi encontrado nenhum local com esse nome"))
                 }
+            } else {
+                self.showMessage(type: .error("Erro desconhecido"))
             }
         }
     }
