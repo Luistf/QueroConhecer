@@ -27,10 +27,32 @@ class PlaceFinderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(getLocation(_:)))
+        gesture.minimumPressDuration = 2.0
+        mapView.addGestureRecognizer(gesture)
     }
     
     //MARK: Methods
+    @objc func getLocation(_ gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            load(show: true)
+            let point = gesture.location(in: mapView)
+            let coordinate = mapView.convert(point, toCoordinateFrom: mapView)
+            let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
+                self.load(show: false)
+                if error == nil {
+                    if !self.savePlace(with: placemarks?.first) {
+                        self.showMessage(type: .error("Não foi encontrado nenhum local com esse nome"))
+                    }
+                } else {
+                    self.showMessage(type: .error("Erro desconhecido"))
+                }
+            }
+            
+        }
+    }
+    
     func load(show: Bool) {
         viLoading.isHidden = !show
         if show {
@@ -63,7 +85,8 @@ class PlaceFinderViewController: UIViewController {
         switch type {
             case .confirmation(let name):
                 title = "Local encontrado"
-            message = "Deseja adicionar \(name)?"
+                message = "Deseja adicionar \(name)?"
+                hasConfirmation = true
         case .error(let errorMessage):
                 title = "Error"
                 message = errorMessage
