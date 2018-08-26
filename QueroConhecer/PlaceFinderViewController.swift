@@ -22,11 +22,24 @@ class PlaceFinderViewController: UIViewController {
         super.viewDidLoad()
 
     }
+    
+    //MARK: Methods
+    func load(show: Bool) {
+        viLoading.isHidden = !show
+        if show {
+            aiLoading.startAnimating()
+        } else {
+            aiLoading.stopAnimating()
+        }
+    }
 
     
     //MARK: Actions
-   
+    
     @IBAction func findCity(_ sender: UIButton) {
+        tfCity.resignFirstResponder()
+        let city = tfCity.text!
+        
     }
     
     @IBAction func close(_ sender: UIButton) {
