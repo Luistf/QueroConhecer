@@ -71,7 +71,7 @@ class PlaceFinderViewController: UIViewController {
         let address = Place.getFormattedAddress(with: placemark)
         place = Place(name: name, latitude: coordinate.latitude, longitude: coordinate.longitude, address: address)
         
-        let region = MKCoordinateRegionMakeWithDistance(coordinate, 1500, 1500)
+        let region = MKCoordinateRegionMakeWithDistance(coordinate, 2500, 2500)
         mapView.setRegion(region, animated: true)
         
         self.showMessage(type: .confirmation(place.name))

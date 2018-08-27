@@ -90,6 +90,9 @@
                                         </constraints>
                                         <color key="barTintColor" name="main"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="5EN-lr-YTf" id="sNF-YG-7uO"/>
+                                        </connections>
                                     </searchBar>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Sb7-fC-Z0S">
                                         <rect key="frame" x="0.0" y="49" width="300" height="218"/>
@@ -135,12 +138,18 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="nPE-ej-IQw">
+                                <rect key="frame" x="142" y="266" width="37" height="37"/>
+                                <color key="color" name="main"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bZz-Cr-hob" firstAttribute="leading" secondItem="FG4-SH-PFk" secondAttribute="leading" constant="10" id="9aN-jL-5z4"/>
+                            <constraint firstItem="nPE-ej-IQw" firstAttribute="centerY" secondItem="Sb7-fC-Z0S" secondAttribute="centerY" id="BDw-fp-2lM"/>
                             <constraint firstItem="fYA-JV-GX4" firstAttribute="bottom" secondItem="FG4-SH-PFk" secondAttribute="bottom" id="FNi-f2-gu3"/>
                             <constraint firstItem="FG4-SH-PFk" firstAttribute="bottom" secondItem="bZz-Cr-hob" secondAttribute="bottom" constant="10" id="MXp-W7-A8G"/>
+                            <constraint firstItem="nPE-ej-IQw" firstAttribute="centerX" secondItem="Sb7-fC-Z0S" secondAttribute="centerX" id="McV-cn-nyE"/>
                             <constraint firstItem="fYA-JV-GX4" firstAttribute="leading" secondItem="FG4-SH-PFk" secondAttribute="leading" id="OEp-T9-GFR"/>
                             <constraint firstItem="fYA-JV-GX4" firstAttribute="top" secondItem="FG4-SH-PFk" secondAttribute="top" id="SEv-rs-Vf7"/>
                             <constraint firstItem="FG4-SH-PFk" firstAttribute="trailing" secondItem="fYA-JV-GX4" secondAttribute="trailing" id="me4-Dg-8e3"/>
@@ -159,6 +168,7 @@
                     <connections>
                         <outlet property="lbAddress" destination="1CU-2W-laJ" id="1WT-CW-Piu"/>
                         <outlet property="lbName" destination="O4k-7v-8K3" id="DQH-TT-41t"/>
+                        <outlet property="loading" destination="nPE-ej-IQw" id="8Jh-Te-Zht"/>
                         <outlet property="mapView" destination="Sb7-fC-Z0S" id="c2i-nG-Rf8"/>
                         <outlet property="seacrBar" destination="R7Q-Ay-4dG" id="77r-De-m4c"/>
                         <outlet property="viInfo" destination="Y8v-EL-oks" id="fad-Tv-Za1"/>

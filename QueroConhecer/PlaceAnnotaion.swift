@@ -18,7 +18,7 @@ class PlaceAnnotaion: NSObject, MKAnnotation {
     
     var coordinate: CLLocationCoordinate2D
     var title: String?
-    var subTible: String?
+    var subTitle: String?
     var type: PlaceType?
     var address: String?
     

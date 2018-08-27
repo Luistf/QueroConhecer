@@ -17,15 +17,17 @@ class mapViewController: UIViewController {
     @IBOutlet weak var viInfo: UIView!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var lbAddress: UILabel!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     
     //MARK: Properties
     var places: [Place]!
+    var poi: [MKAnnotation] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         seacrBar.isHidden = true
         viInfo.isHidden = true
-        
+        mapView.mapType = .mutedStandard
         mapView.delegate = self
         
         if places.count == 1 {
@@ -60,6 +62,8 @@ class mapViewController: UIViewController {
     }
     
     @IBAction func showSearchBar(_ sender: UIBarButtonItem) {
+        seacrBar.resignFirstResponder()
+        seacrBar.isHidden = !seacrBar.isHidden
     }
     
 }
@@ -85,6 +89,39 @@ extension mapViewController: MKMapViewDelegate {
         return annotaionView
     }
     
+}
+
+extension mapViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.isHidden = true
+        searchBar.resignFirstResponder()
+        loading.startAnimating()
+        
+        let request = MKLocalSearchRequest()
+        request.naturalLanguageQuery = searchBar.text
+        request.region = mapView.region
+        let search = MKLocalSearch(request: request)
+        search.start { (response, error) in
+            if error == nil {
+                guard let response = response else {
+                    self.loading.stopAnimating()
+                    return
+                }
+                self.mapView.removeAnnotations(self.poi)
+                self.poi.removeAll()
+                for item in response.mapItems {
+                    let annotaion = PlaceAnnotaion(coordinate: item.placemark.coordinate, type: .poi)
+                    annotaion.title = item.name
+                    annotaion.subTitle = item.phoneNumber
+                    annotaion.address = Place.getFormattedAddress(with: item.placemark)
+                    self.poi.append(annotaion)
+                }
+                self.mapView.addAnnotations(self.poi)
+                self.mapView.showAnnotations(self.poi, animated: true)
+            }
+            self.loading.stopAnimating()
+        }
+    }
 }
 
 
